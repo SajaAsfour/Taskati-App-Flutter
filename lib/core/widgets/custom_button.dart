@@ -5,31 +5,39 @@ import 'package:taskati/core/utils/colors.dart';
 import 'package:taskati/core/utils/text_style.dart';
 
 class customButton extends StatelessWidget {
-  final String text ;
-
+  final String text;
+  final double width;
+  final double height;
+  final Color? backgroundColor;
+  final Color? txtColor;
+  final Function () onPressed;
   const customButton({
     super.key,
-    required this.text ,
-    
+    required this.text,
+    this.width = 250,
+    this.height = 45,
+    this.backgroundColor,
+    this.txtColor,
+    required this.onPressed,
   });
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: 350,
-      height: 50,
+      width: width,
+      height: height,
       child: ElevatedButton(
-          onPressed: () {},
+          onPressed: onPressed,
           child: Text(
             text,
-            style: getBodyTextStyle(color: AppColor.whiteColor),
+            style: getSmallTextStyle(
+              color: txtColor?? AppColor.whiteColor,
+            ),
           ),
           style: ElevatedButton.styleFrom(
-            backgroundColor: AppColor.primaryColor,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(10)
-            )
-          )),
+              backgroundColor: backgroundColor?? AppColor.primaryColor,
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10)))),
     );
   }
 }
