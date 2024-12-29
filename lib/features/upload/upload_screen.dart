@@ -1,8 +1,9 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, sort_child_properties_last, avoid_print
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, sort_child_properties_last, avoid_print, use_build_context_synchronously
 
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:taskati/core/functions/navigations.dart';
 import 'package:taskati/core/utils/colors.dart';
 import 'package:taskati/core/utils/text_style.dart';
@@ -28,8 +29,12 @@ class _UploadScreenState extends State<UploadScreen> {
       appBar: AppBar(
         actions: [
           TextButton(
-              onPressed: () {
+              onPressed: () async{
                 if (formKey.currentState!.validate() && path != null) {
+                  var Box = await Hive.openBox('user');
+                  var userBox = Hive.box('user');
+                  userBox.put('name',nameController.text);
+                  userBox.put('image',path);
                   pushWithReplacement(context, HomeScreen());
                 } else if (path == null) {
                   showDialog(
