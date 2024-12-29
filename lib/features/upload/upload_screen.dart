@@ -129,8 +129,8 @@ class _UploadScreenState extends State<UploadScreen> {
                   validator: (value) {
                     if (value!.isEmpty) {
                       return "Name Is Required";
-                    } else if (value.length < 3) {
-                      return "Min Lenght Is 3";
+                    } else if (!RegExp('^[A-Z][a-z]{2,8}').hasMatch(value)) {
+                      return "Name must be a capital charcter then small chracter\nAnd its length from 2 to 8";
                     }
                     return null;
                   },
