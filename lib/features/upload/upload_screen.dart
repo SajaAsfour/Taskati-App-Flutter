@@ -33,7 +33,7 @@ class _UploadScreenState extends State<UploadScreen> {
                 if (formKey.currentState!.validate() && path != null) {
                   var Box = await Hive.openBox('user');
                   var userBox = Hive.box('user');
-                  userBox.put('name',nameController.text);
+                  userBox.put('name', nameController.text);
                   userBox.put('image',path);
                   pushWithReplacement(context, HomeScreen());
                 } else if (path == null) {
