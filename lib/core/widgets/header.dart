@@ -2,17 +2,23 @@
 
 import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:taskati/core/functions/navigations.dart';
 import 'package:taskati/core/utils/text_style.dart';
+import 'package:taskati/features/upload/upload_screen.dart';
 
 class header extends StatelessWidget {
   const header({
     super.key,
     required this.title,
     required this.customWidget,
+    required this.text,
+    this.additiondata,
   });
 
   final String title;
   final Widget customWidget;
+  final String text;
+  final String? additiondata;
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -27,13 +33,27 @@ class header extends StatelessWidget {
               ),
             ),
             Text(
-              "Have A Nice Day!",
+              text,
               style: getBodyTextStyle(),
             ),
           ],
         ),
         Spacer(),
-        customWidget,
+        Column(
+          children: [
+            customWidget,
+            if (additiondata != null)
+              GestureDetector(
+                onTap: () {
+                  pushTo(context, UploadScreen());
+                },
+                child: Text(
+                  'Update Your Profile',
+                  style: getSmallTextStyle(),
+                ),
+              )
+          ],
+        ),
       ],
     );
   }

@@ -6,6 +6,7 @@ TextStyle getTitleTextStyle( {double? fontSize , Color? color, FontWeight? fontW
     fontSize: fontSize ?? 30,
     color: color?? AppColor.primaryColor,
     fontWeight: fontWeight?? FontWeight.bold,
+    fontFamily: "Times New Roman",
   );
 }
 TextStyle getSmallTextStyle( {double? fontSize , Color? color, FontWeight? fontWeight}) {
@@ -13,6 +14,7 @@ TextStyle getSmallTextStyle( {double? fontSize , Color? color, FontWeight? fontW
     fontSize: fontSize ?? 16,
     color: color?? AppColor.primaryColor,
     fontWeight: fontWeight?? FontWeight.normal,
+    fontFamily: "Times New Roman",
   );
 }
 TextStyle getBodyTextStyle( {double? fontSize , Color? color, FontWeight? fontWeight}) {
@@ -20,5 +22,6 @@ TextStyle getBodyTextStyle( {double? fontSize , Color? color, FontWeight? fontWe
     fontSize: fontSize ?? 24,
     color: color?? AppColor.primaryColor,
     fontWeight: fontWeight?? FontWeight.bold,
+    fontFamily: "Times New Roman",
   );
 }
